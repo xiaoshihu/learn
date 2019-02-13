@@ -19,11 +19,13 @@ def averager():  # <1>
         average = total/count
     # 这个值会传递到委托方里面去
     return Result(count, average)  # <4>
+
 # the delegating generator
 def grouper(results, key):  # <5>
     # 这里的循环有什么作用吗？
     # while True:  # <6>
     results[key] = yield from averager()  # <7>
+    
 # the client code, a.k.a. the caller
 def main(data):  # <8>
     results = {}
