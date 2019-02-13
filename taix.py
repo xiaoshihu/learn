@@ -94,6 +94,7 @@ def main(end_time=DEFAULT_END_TIME, num_taxis=DEFAULT_NUMBER_OF_TAXIS,
 
 if __name__ == '__main__':
 
+    # 这个方法值得学习，以后需要传递的参数都使用这种方式
     parser = argparse.ArgumentParser(
                         description='Taxi fleet simulator.')
     # 这些就是添加的选项，前面是选项的缩写，第二项是具名元组的属性名称，第三个是默认的初始值，最后一个是说明信息
