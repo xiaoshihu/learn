@@ -22,9 +22,9 @@ def averager():  # <1>
 
 # the delegating generator
 def grouper(results, key):  # <5>
-    # 这里的循环有什么作用吗？
-    # while True:  # <6>
-    results[key] = yield from averager()  # <7>
+    # 这里的循环有什么作用吗？如果这里不让委托方阻塞的话，会出现有一个异常是处理不了的。
+    while True:  # <6>
+        results[key] = yield from averager()  # <7>
     
 # the client code, a.k.a. the caller
 def main(data):  # <8>
