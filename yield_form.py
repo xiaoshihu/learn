@@ -23,9 +23,10 @@ def averager():  # <1>
 
 # the delegating generator
 def grouper(results, key):  # <5>
-    # 这里的循环有什么作用吗？
-    # while True:  # <6>
-    results[key] = yield from averager()  # <7>
+    # 这里的循环有什么作用吗？用于后面处理异常，委托方还是弄成一个可以无限循环阻塞的
+    # 函数比较好，启动和结束由调用方和子生成器来决定
+    while True:  # <6>
+        results[key] = yield from averager()  # <7>
 
 
 # the client code, a.k.a. the caller
