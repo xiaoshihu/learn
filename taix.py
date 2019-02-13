@@ -45,27 +45,40 @@ class Simulator:
         # 下划线基本上就是用来作为不需要使用的参数的，跟匿名函数是差不多的作用
         # 对字典里面的东西进行排序，但是是怎么排序的呢
         # 如果sorted函数里面排序的项目是字典，那么最终会返回按照字典里面的key值排好顺序的，并且键值对变成
-        # 一个元组的数列
+        # 一个元组的数列,所以这里会返回一个按照出租车序号排序的数列
         '''
         eg:
         test = {0: 2, 1: 4, 2: 6, 3: 8, 4: 10, 5: 12, 6: 14, 7: 16, 10: 18, 9: 20}
         sorted(test.items()) 
         >>>[(0, 2),(1, 4),(2, 6),(3, 8),(4, 10),(5, 12),(6, 14),(7, 16),(9, 20),(10, 18)]
         '''
+        # 预激所有的出租车生成器，然后将所有包含开始时间的具名元组添加到队列里面去
         for _, proc in sorted(self.procs.items()):  # <2>
+            # 第一个参数是出租车的序号，第二个参数是生成器，第一个参数后面不需要用到，所以用下划线来表示
+            # 对生成器进行预激
+            # first_event接受了生成器返回的值Event(start_time, ident, 'leave garage')
+            # 一个具名元组，里面都是出租车开始的时间
             first_event = next(proc)  # <3>
+            # 将预激的生成器送入队列里面
+            # 这里之前描述错误，这里并不是生成器，
             self.events.put(first_event)  # <4>
 
         # main loop of the simulation
         sim_time = 0  # <5>
+        # 事件会一直循环，直到大于规定的时间
         while sim_time < end_time:  # <6>
+            # 如果队列空了，就退出循环
             if self.events.empty():  # <7>
                 print('*** end of events ***')
                 break
 
+            # 从队列中获取最新添加进去的数据
             current_event = self.events.get()  # <8>
+            # 三个参数分别代表的是，时间，出租车序号，出租车的动作
             sim_time, proc_id, previous_action = current_event  # <9>
-            print('taxi:', proc_id, proc_id * '   ', current_event)  # <10>
+            # 这里用来区别每一个出租车的输出信息
+            print('taxi:', proc_id, proc_id * '#', current_event)  # <10>
+            # 获取对应序号的出租车生成器对象
             active_proc = self.procs[proc_id]  # <11>
             next_time = sim_time + compute_duration(previous_action)  # <12>
             try:
@@ -79,7 +92,7 @@ class Simulator:
             print(msg.format(self.events.qsize()))
 # END TAXI_SIMULATOR
 
-
+# 这个应该是生成一个随机的时间，代表乘客的路程时间。
 def compute_duration(previous_action):
     """Compute action duration using exponential distribution"""
     if previous_action in ['leave garage', 'drop off passenger']:
