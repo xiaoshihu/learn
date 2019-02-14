@@ -1,8 +1,7 @@
-import random
+import argparse
 import collections
 import queue
-import argparse
-import time
+import random
 
 # 一些全局参数
 DEFAULT_NUMBER_OF_TAXIS = 3
@@ -17,6 +16,7 @@ Event = collections.namedtuple('Event', 'time proc action')
 
 # BEGIN TAXI_PROCESS
 def taxi_process(ident, trips, start_time=0):  # <1>
+    # 第二个参数应该是搭乘乘客的数量
     """Yield to simulator issuing event at each state change"""
     # 不要在用生成器的观点去考虑这个位置，这个就是一个控制点
     time = yield Event(start_time, ident, 'leave garage')  # <2>
@@ -28,6 +28,8 @@ def taxi_process(ident, trips, start_time=0):  # <1>
     # 最后一个控制点
     yield Event(time, ident, 'going home')  # <6>
     # end of taxi process # <7>
+
+
 # END TAXI_PROCESS
 
 
@@ -80,8 +82,11 @@ class Simulator:
             print('taxi:', proc_id, proc_id * '#', current_event)  # <10>
             # 获取对应序号的出租车生成器对象
             active_proc = self.procs[proc_id]  # <11>
+            # 后面的函数应该是生成一个随机数
             next_time = sim_time + compute_duration(previous_action)  # <12>
+
             try:
+                # 触发生成器进行下面的步骤，将next_time传递给函数里面的time
                 next_event = active_proc.send(next_time)  # <13>
             except StopIteration:
                 del self.procs[proc_id]  # <14>
@@ -90,6 +95,8 @@ class Simulator:
         else:  # <16>
             msg = '*** end of simulation time: {} events pending ***'
             print(msg.format(self.events.qsize()))
+
+
 # END TAXI_SIMULATOR
 
 # 这个应该是生成一个随机的时间，代表乘客的路程时间。
@@ -105,7 +112,7 @@ def compute_duration(previous_action):
         interval = 1
     else:
         raise ValueError('Unknown previous_action: %s' % previous_action)
-    return int(random.expovariate(1/interval)) + 1
+    return int(random.expovariate(1 / interval)) + 1
 
 
 # 函数里面也指定了默认值了的
@@ -119,7 +126,7 @@ def main(end_time=DEFAULT_END_TIME, num_taxis=DEFAULT_NUMBER_OF_TAXIS,
     # 字典推导式，看看得到的是一个什么结果，第一个参数是序号，第二个参数是还不知道，第三个参数是出租车的出发时间
     # 字典推导式我之前还没有使用过
     # 生成了一个序号对应taix生成器的键值对的字典
-    taxis = {i: taxi_process(i, (i+1)*2, i*DEPARTURE_INTERVAL) for i in range(num_taxis)}
+    taxis = {i: taxi_process(i, (i + 1) * 2, i * DEPARTURE_INTERVAL) for i in range(num_taxis)}
     # 这些推导式在新建数据结构的时候真的好用，以后需要自己注意一点，但是仅仅只使用于在新建数据的时候
     # taxis = {i: (i+1)*2 for i in range(10)}
     sim = Simulator(taxis)
@@ -127,19 +134,18 @@ def main(end_time=DEFAULT_END_TIME, num_taxis=DEFAULT_NUMBER_OF_TAXIS,
 
 
 if __name__ == '__main__':
-
     # TODO:这个方法值得学习，以后需要传递的参数都使用这种方式
     parser = argparse.ArgumentParser(
-                        description='Taxi fleet simulator.')
+        description='Taxi fleet simulator.')
     # 这些就是添加的选项，前面是选项的缩写，第二项是具名元组的属性名称，第三个是默认的初始值，最后一个是说明信息
     parser.add_argument('-e', '--end-time', type=int,
                         default=DEFAULT_END_TIME,
                         help='simulation end time; default = %s'
-                        % DEFAULT_END_TIME)
+                             % DEFAULT_END_TIME)
     parser.add_argument('-t', '--taxis', type=int,
                         default=DEFAULT_NUMBER_OF_TAXIS,
                         help='number of taxis running; default = %s'
-                        % DEFAULT_NUMBER_OF_TAXIS)
+                             % DEFAULT_NUMBER_OF_TAXIS)
     parser.add_argument('-s', '--seed', type=int, default=None,
                         help='random generator seed (for testing)')
 
