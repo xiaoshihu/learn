@@ -3,6 +3,15 @@ import collections
 import queue
 import random
 
+# 基本上这个文件都已经看懂了，但是有一点不是很清楚，就是，这里怎么就实现了并发了模拟？怎么体现事件驱动的？
+# 理一下怎么是想怎么实现事件驱动，就是一个主线程里面一直有一个循环，这个循环不间断的遍历一些东西，当这些
+# 东西能够使用的时候，就去处理它，这个时候会产生新的线程或者进程，然后让这些进程或者线程去处理具体的事务，之前看的
+# 书上的例子都是这样写的，那就是比较传统的服务器的类型，之后接触到的异步服务器是完全不一样的，理论上只有一个线程就
+# 可以实现多io类型请求的并发，先不说系统内核支持的套接字监听， 当当从生成器的特性说起，这个例子还是没有体现并发的概念
+# 只有多个套接字的时候，才能很好的说明并发是怎么在一个线程里面实现的，当然，协程如果离开异步网路编程，基本上
+# 也看不出什么实际的意义。所以，举例子最好是使用多个套接字，或者linux内核支持的管道和文件，就是支持系统层面上
+# 的系统能提供监听操作的操作。但是异步操作一定不要去处理cpu密集型的任务，因为，是会造成阻塞的，也可以和多进程和
+# 多线程结合起来使用，实现处理cpu任务密集型的任务。现在脑子里面好像是把这些东西弄清楚了。
 # 一些全局参数
 DEFAULT_NUMBER_OF_TAXIS = 3
 DEFAULT_END_TIME = 180
@@ -20,6 +29,7 @@ def taxi_process(ident, trips, start_time=0):  # <1>
     """Yield to simulator issuing event at each state change"""
     # 不要在用生成器的观点去考虑这个位置，这个就是一个控制点
     time = yield Event(start_time, ident, 'leave garage')  # <2>
+    # 因为这里里面必要要有一个循环的事件，才能一直不停的处理，写表达式就是为了传递值
     for i in range(trips):  # <3>
         # 乘客上下的控制点
         time = yield Event(time, ident, 'pick up passenger')  # <4>
@@ -74,7 +84,7 @@ class Simulator:
                 print('*** end of events ***')
                 break
 
-            # 从队列中获取最新添加进去的数据
+            # 从队列中获取最新添加进去的数据，会直接将里面的数据取出来，然后队列里面就会少一个数据
             current_event = self.events.get()  # <8>
             # 三个参数分别代表的是，时间，出租车序号，出租车的动作
             sim_time, proc_id, previous_action = current_event  # <9>
@@ -86,14 +96,21 @@ class Simulator:
             next_time = sim_time + compute_duration(previous_action)  # <12>
 
             try:
-                # 触发生成器进行下面的步骤，将next_time传递给函数里面的time
+                # 触发生成器进行下面的步骤，将next_time传递给函数里面的time，并且将返回的具名元组赋值给next_event
                 next_event = active_proc.send(next_time)  # <13>
             except StopIteration:
+                # 搭车的乘客数量够了之后，就会触发这个异常，并且从字典中将这个出租车删除掉
                 del self.procs[proc_id]  # <14>
+            # 在没有出现异常的情况下才会执行下面的语句
             else:
+                # 将最新获取到的具名元组，也就是说明了出租车现在的运营状态
                 self.events.put(next_event)  # <15>
+        # 这里的else和dinally的作用有点类似
         else:  # <16>
+            # 只有在循环是以正常的运行状态退出的时候，也就是while循环是条件不成立的情况下退出，for循环，是迭代完成之后
+            # 退出，里面如果使用break退出的话，else里面的语句是不会执行的
             msg = '*** end of simulation time: {} events pending ***'
+            # 获取队列里面的元素的个数
             print(msg.format(self.events.qsize()))
 
 
@@ -151,6 +168,7 @@ if __name__ == '__main__':
 
     # 获取所有的参数，然后每一个参数就能使用属性的名称去调用，确实比之前的sys模块下面的东西好用多了，之后我的脚本其实也可以改变一下。
     # 获取的对象是一个具名元组，我之前想过用一个字典去实现类似的功能，现在看来别人有了更好的解决方法
+    # 这里应该是自己回去获取命令行里面输入的参数。比之前那种方式确实是要好很多。
     args = parser.parse_args()
     # 所以这里就传递了相应的参数，上面的用法还是比较好用的。
     main(args.end_time, args.taxis, args.seed)
