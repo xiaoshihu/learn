@@ -36,6 +36,7 @@ setuptools.setup(
         'yagmail',
         'urllib3',
         'Pillow',
+        'pymysql',
     ],
     # 指定下载库的连接
     dependency_links=['https://pypi.tuna.tsinghua.edu.cn/simple'],
