@@ -12,6 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/pypa/sampleproject",
+    # 自动查找文件下要打包的文件夹
     packages=setuptools.find_packages(),
     # 打包非python文件
     include_package_data=True,
