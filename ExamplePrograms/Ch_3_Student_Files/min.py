@@ -9,6 +9,6 @@ def ourMin(lyst, trace = False):
     while current < len(lyst):
         if lyst[current] < lyst[minpos]:
             minpos = current
-            if trace: print current, minpos
+            if trace: print(current, minpos)
         current += 1
     return minpos
