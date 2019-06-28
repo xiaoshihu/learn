@@ -34,6 +34,8 @@ StringBad::StringBad(const char *s)
     // 获取字符串的长度，注意不会将最后一个 \0 计算进去
     len = std::strlen(s);
     // 这里就实现了动态创建，但是，这个变量需要手动释放
+    // 总觉得这样的动态并不是我想象的动态，这样的操作还是有点繁琐的
+    // 我好像有点理解动态的含义，动态是将变量储存到动态内存里面，也就是堆里面？
     str = new char[len + 1];
     // 复制两个字符串
     std::strcpy(str, s);
@@ -63,13 +65,14 @@ StringBad::~StringBad()
     delete[] str;
 }
 
+// 将 cout 返回，确实很巧妙，就可以连续使用这个重载的运算符了
 std::ostream &operator<<(std::ostream &os, const StringBad &st)
 {
     os << st.str;
     return os;
 }
 
-// 说实话，代码看起来有点分散
+// 说实话，代码看起来有点分散,但是，目前还没有看到哪里有什么不妥呀，就是这个计数确实没什么作用
 
 int main(int argc, const char **argv)
 {
