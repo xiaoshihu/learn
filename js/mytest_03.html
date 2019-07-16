@@ -1,0 +1,17 @@
+<input type="text" onkeypress="enter()"></input>
+<div>
+    <textarea cols="30" rows="10"></textarea>
+</div>
+<script>
+    function enter() {
+        if (event.code == "Enter") {
+            // 获取 input 标签里面的值
+            let input = document.getElementsByTagName('input')[0];
+            let textarea = document.getElementsByTagName('textarea')[0];
+            // 不知道有没有这个东西
+            let text = input.value;
+            textarea.textContent = text;
+            input.value = '';
+        }
+    }
+</script>

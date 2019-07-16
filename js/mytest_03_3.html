@@ -1,0 +1,112 @@
+<!-- 创建下图所示页面, 将左边DIV中的两个文本标签拖入右边DIV中，同时移除左边的标签 -->
+<style>
+    .root {
+        display: -webkit-box;
+    }
+
+    .con {
+        border-style: solid;
+        border-width: 1px;
+        width: 200px;
+        height: 200px;
+        /* color */
+    }
+
+    p {
+        border-style: solid;
+        border-width: 1px;
+        width: 100px;
+        /* 移动到元素上的鼠标状态 */
+        cursor: default;
+        position: relative;
+        /* left: 100px;
+        top: 100px; */
+    }
+</style>
+<div class="root">
+    <div id="div1" class="con">
+        div1
+        <!-- 需要绑定拖拽事件 -->
+        <p>i@Report</p>
+        <p>BI@Report</p>
+    </div>
+    <div id="div2" class="con">
+        div2
+    </div>
+</div>
+<script>
+    let p_list = document.getElementsByTagName('p');
+    let div2 = document.getElementById('div2');
+    let div1 = document.getElementById('div1');
+    for (let p of p_list) {
+        p.onmousedown = () => {
+            event.stopPropagation();
+            let x = event.clientX;
+            let y = event.clientY;
+            // 弱类型是真的坑
+            let x_org = parseInt(p.style.left.slice(0, -2)) || 0;
+            let y_org = parseInt(p.style.top.slice(0, -2)) || 0;
+            document.onmousemove = () => {
+                window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+                let x_off = event.clientX - x;
+                let y_off = event.clientY - y;
+                p.style.left = x_org + x_off + 'px';
+                p.style.top = y_org + y_off + 'px';
+                // console.log(`(${x_off},${y_off})`);
+                p.onmouseup = () => {
+                    document.onmousemove = null;
+                    p.onmouseup = null;
+                }
+                if (inEle([event.clientX, event.clientY], div2)) {
+                    p.style.pointerEvents = 'none';
+                    div2.onmouseup = () => {
+                        p.style.left = 0;
+                        p.style.top = 0;
+                        div1.removeChild(p);
+                        div2.appendChild(p);
+                        document.onmousemove = null;
+                        div2.onmouseup = null;
+                        p.style.pointerEvents = 'auto';
+                        p.onmousedown = null;
+                    };
+                }
+                else {
+                    p.style.pointerEvents = 'auto';
+                }
+            };
+
+        }
+    }
+
+    // 获取元素的绝对位置坐标（像对于页面左上角）
+    function getElePosition(element) {
+        let actualLeft = element.offsetLeft;
+        let actualTop = element.offsetTop;
+        let parent = element.offsetParent;
+        // 叠加所有父容器的坐标
+        while (parent) {
+            actualLeft += parent.offsetLeft;
+            actualTop += parent.offsetTop;
+            parent = parent.offsetParent;
+        }
+        return [actualLeft, actualTop]
+    }
+
+    function inEle([x, y], element) {
+        // 判断一个点是否落在某一个元素上
+        let [ele_x, ele_y] = getElePosition(element);
+        let ele_h = element.offsetHeight;
+        let ele_w = element.offsetWidth;
+        if (x >= ele_x && x <= ele_x + ele_w && y >= ele_y && y <= ele_y + ele_h) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    // let x = (x) => x*x;
+    // x(20);
+    // const x = 30;
+    // x= 20;
+    // console.log(x);
+</script>

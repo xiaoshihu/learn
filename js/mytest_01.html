@@ -1,0 +1,54 @@
+<script>
+  // aaa,aaa,cc,cc,cc,cc,dddd,a,a,a,a,a,a,g,q,q,q,999,999,999,999,999,999,999
+  let input = prompt("please input:");
+  function count() {
+    let text = input;
+    let con_list = text.split(",");
+    con_list.sort();
+    let result = new Map();
+    let items = new Set(con_list);
+    for (const item of items) {
+      let frist = con_list.indexOf(item);
+      let last = con_list.lastIndexOf(item);
+      let count_num = last - frist + 1;
+      result.set(item, count_num);
+    }
+    alert(strMap_sort(result));
+  }
+
+  function strMap_sort(strMap) {
+    let v_max;
+    let k_max;
+    let text = "";
+    // 解包的方式比较适合进行类型的转换
+    let [k_list, v_list] = [[...strMap.keys()], [...strMap.values()]];
+
+    // let [k_list, v_list] = (() => {
+    //   let k_list = [];
+    //   let v_list = [];
+    //   for (const [k, v] of strMap) {
+    //     k_list.push(k);
+    //     v_list.push(v);
+    //   }
+    //   return [k_list, v_list];
+    // })();
+
+    for (let i = 0; i < v_list.length; i++) {
+      for (let i_i = i + 1; i_i < v_list.length; i_i++) {
+        if (v_list[i] < v_list[i_i]) {
+          v_max = v_list[i_i];
+          k_max = k_list[i_i];
+
+          v_list[i_i] = v_list[i];
+          k_list[i_i] = k_list[i];
+
+          v_list[i] = v_max;
+          k_list[i] = k_max;
+        }
+      }
+      text += `${k_list[i]}:${v_list[i]},`;
+    }
+    return "{" + text.slice(0, -1) + "}";
+  }
+</script>
+<button onclick="count()">确定</button>

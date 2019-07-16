@@ -1,0 +1,50 @@
+<style>
+  .parent {
+    color: black;
+    font-weight: bold;
+    /* text-indent: 1%;  */
+  }
+  .child {
+    color: red;
+    text-indent: 1em; 
+  }
+</style>
+
+<div id="root"></div>
+
+<script>
+  let element = document.getElementById("root");
+
+  let node1 = document.createElement("div");
+  node1.className = "parent";
+  node1.textContent = "节点1";
+
+  let node1_child1 = document.createElement("div");
+  node1_child1.className = "child";
+  node1_child1.textContent = "节点11";
+  node1.appendChild(node1_child1);
+
+  let node1_child2 = document.createElement("div");
+  node1_child2.className = "child";
+  node1_child2.textContent = "节点12";
+  node1.appendChild(node1_child2);
+
+  element.appendChild(node1);
+
+  let node2 = document.createElement("div");
+  node2.className = "parent";
+  node2.textContent = "节点2";
+
+  let node2_child1 = document.createElement("div");
+  node2_child1.className = "child";
+  node2_child1.textContent = "节点21";
+  node2.appendChild(node2_child1);
+
+  let node2_child2 = document.createElement("div");
+  node2_child2.className = "child";
+  node2_child2.textContent = "节点22";
+  node2.appendChild(node2_child2);
+
+  element.appendChild(node2);
+
+</script>
