@@ -5,17 +5,20 @@ Instructions:
 */
 
 import test from 'ava';
-import {strict as assert} from 'assert';
+import { strict as assert } from 'assert';
 
 test('typeof', t => {
-  assert.equal(typeof null, '???');
-  assert.equal(typeof undefined, '???');
-  
-  assert.equal(typeof 123, '???');
-  assert.equal(typeof 'a', '???');
-  assert.equal(typeof "abc", '???');
-  
-  assert.equal(typeof {}, '???');
-  assert.equal(typeof function () {}, '???');
-  assert.equal(typeof [], '???');
+  // 怎么判断是不是 null?
+  assert.equal(typeof null, 'object');// object
+  assert.equal(typeof undefined, 'undefined');
+
+  assert.equal(typeof 123, 'number');
+  assert.equal(typeof 'a', 'string');
+  assert.equal(typeof "abc", 'string');
+
+  assert.equal(typeof {}, 'object');
+  // 这个 function 本来就是 object 的下面的分类，出来这个东西有点疑惑
+  assert.equal(typeof function () { }, 'function');
+  // 那怎么判断一个变量是数组？
+  assert.equal(typeof [], 'object');
 });

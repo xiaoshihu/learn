@@ -14,19 +14,19 @@
 </style>
 <div></div>
 <script>
-    let div = document.getElementsByTagName("div")[0];
+    let div = document.getElementsByTagName('div')[0];
     div.onclick = () => {
         let x = event.clientX;
         let y = event.clientY;
         // alert(`(${x},${y})`);
-        let text = document.createElement("p");
-        text.textContent = "esensoft";
+        let text = document.createElement('p');
+        text.textContent = 'esensoft';
 
-        let width = text.width;
+        // let width = text.width;
         // alert(width);
         text.style.left = x - 30;
         text.style.top = y - 25;
-        text.style.position = "absolute";
+        text.style.position = 'absolute';
         // 动态绑定监听事件
         text.addEventListener('click', p_click, false);
 

@@ -4,9 +4,9 @@ Instructions:
 */
 
 import test from 'ava';
-import {strict as assert} from 'assert';
+import { strict as assert } from 'assert';
 
-import {arrayToString} from './array_to_string.mjs';
+// import { arrayToString } from './array_to_string.mjs';
 
 test('arrayToString', t => {
   const CMYK = [
