@@ -43,7 +43,7 @@ class node:
         self.next.append(next)
 
     def __repr__(self):
-        return f'name:{self.name},next:{self.next}'
+        return 'name:{},next:{}'.format(self.name,self.next)
 
     def __eq__(self, other):
         return self.name == other.name
@@ -73,7 +73,7 @@ class tran:
         # self.dot.save('round-table.gv')
 
     def __repr__(self):
-        return f'{self.node_list}'
+        return '{}'.format(self.node_list)
 
     # 将每条光纤传递的路径都打印出来
     def chain(self):
@@ -90,10 +90,10 @@ class tran:
         # 不是很好弄，因为我想把分支表现出来
         # 这个前缀不是很好弄，
         if not next_node_list:
-            print(f'{self.pre}end')
+            print('{}end'.format(self.pre))
             # self.pre = self.pre[:-1]
             return
-        out_str = f'{self.pre}({next_node_list[0]})'
+        out_str = '{}({})'.format(self.pre,next_node_list[0])
         print(out_str)
         if len(next_node_list[0].next) >1:
             self.pre += '--'
@@ -129,5 +129,5 @@ if __name__ == '__main__':
     # mylist = ['a&c', 'c&b', 'b&d', 'd&f', 'f&j','b&g','g&d','g&h','h&d','d&p','p&f']
     mylist = ['9-93&5-11sfiu-3&&9-93&13-12obu1-4','9-93&13-12obu1-2&&9-93&10-itl-1','9-93&13-12obu1-5&&9-93&13-12obu1-4','1-5&6-11sfiu-1&&9-93&5-11sfiu-1','1-5&7-itl-1&&1-5&5-13oau1-7','1-5&5-13oau1-8&&1-5&5-13oau1-1','1-5&5-13oau1-4&&1-5&6-11sfiu-3']
     start = '1-5&7-itl-1&&1-5&5-13oau1-7'
-    print(len(mylist))
+    # print(len(mylist))
     tran(start,mylist)
