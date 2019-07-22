@@ -31,7 +31,7 @@ class node:
 
         :param point: 节点信息
         '''
-        self.next = []
+        self.next:List[node_name] = []
         self.parse(point)
 
     def parse(self,point):
@@ -62,12 +62,14 @@ class tran:
         mylist.sort()
         self.mylist = mylist
         self.node_list:List[node] = []
+        self.selfcheck = []
         # 这个里面保存所有的路径。
         # self.node_sort = []
         self.pre = ''
         self.deal_list()
         self.chain()
         print('alone:{}'.format(self.copy_list))
+        print('self-check:{}'.format(self.selfcheck))
         # self.dot.save('round-table.gv')
 
     def __repr__(self):
@@ -112,6 +114,10 @@ class tran:
         next:node = None
         for i in self.mylist:
             new_node = node(i)
+            # 去掉自检
+            if new_node.name.name == new_node.next[0].name:
+                self.selfcheck.append(new_node)
+                continue
             if next:
                 if new_node == next:
                     next.addnext(new_node.next[0])
@@ -119,10 +125,9 @@ class tran:
             self.node_list.append(new_node)
             next = new_node
 
-        # for i in self.node_list:
-        #     self.dot.node(i.name,i.name)
-
 if __name__ == '__main__':
     # mylist = ['a&c', 'c&b', 'b&d', 'd&f', 'f&j','b&g','g&d','g&h','h&d','d&p','p&f']
-    mylist = ['18-9845&2-12OAU1-3&&18-9845&3-12m40-1', '18-9845&3-12m40-2&&18-9845&3-12m39-1','18-9845&3-12m40-3&&18-9845&3-12m35-1','18-9845&3-12m0-3&&18-9845&3-12m5-1']
-    tran('18-9845&2-12OAU1-3&&18-9845&3-12m40-1',mylist)
+    mylist = ['9-93&5-11sfiu-3&&9-93&13-12obu1-4','9-93&13-12obu1-2&&9-93&10-itl-1','9-93&13-12obu1-5&&9-93&13-12obu1-4','1-5&6-11sfiu-1&&9-93&5-11sfiu-1','1-5&7-itl-1&&1-5&5-13oau1-7','1-5&5-13oau1-8&&1-5&5-13oau1-1','1-5&5-13oau1-4&&1-5&6-11sfiu-3']
+    start = '1-5&7-itl-1&&1-5&5-13oau1-7'
+    print(len(mylist))
+    tran(start,mylist)
