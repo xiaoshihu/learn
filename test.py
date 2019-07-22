@@ -7,7 +7,20 @@
     @desc:
 """
 from typing import List
+import copy
 # from graphviz import Digraph
+
+class node_name:
+
+    def __init__(self,name,port):
+        self.name = name
+        self.port = port
+
+    def __repr__(self):
+        return '{}-{}'.format(self.name,self.port)
+
+    def __eq__(self, other):
+        return self.name == other.name
 
 class node:
     '''抽象出来的单板对象'''
@@ -23,16 +36,14 @@ class node:
 
     def parse(self,point):
         name,next = point.split('&&')
-        self.name = '-'.join(name.split('-')[:-1])
-        self.port = name.split('-')[-1]
-        next = '-'.join(next.split('-')[:-1])
-        self.next.append(next)
+        self.name = node_name('-'.join(name.split('-')[:-1]),name.split('-')[-1])
+        self.next.append(node_name('-'.join(next.split('-')[:-1]),next.split('-')[-1]))
 
     def addnext(self, next):
         self.next.append(next)
 
     def __repr__(self):
-        return f'name:{self.name}-{self.port},next:{self.next}'
+        return f'name:{self.name},next:{self.next}'
 
     def __eq__(self, other):
         return self.name == other.name
@@ -56,6 +67,7 @@ class tran:
         self.pre = ''
         self.deal_list()
         self.chain()
+        print('alone:{}'.format(self.copy_list))
         # self.dot.save('round-table.gv')
 
     def __repr__(self):
@@ -68,6 +80,7 @@ class tran:
         tmp = self.node_list[start_index]
         self.node_list[start_index] = self.node_list[0]
         self.node_list[0] = tmp
+        self.copy_list = copy.deepcopy(self.node_list[1:])
         self.create_chain([self.node_list[0]])
 
     def create_chain(self,next_node_list:List[node]):
@@ -89,6 +102,7 @@ class tran:
                 for _node in self.node_list:
                     if i == _node.name:
                         _next_node.append(_node)
+                        self.copy_list.remove(_node)
                         # self.dot.edge(sig_node.name,_node.name)
                 # 首先将一条路径走完是正确的
                 self.create_chain(_next_node)
@@ -110,5 +124,5 @@ class tran:
 
 if __name__ == '__main__':
     # mylist = ['a&c', 'c&b', 'b&d', 'd&f', 'f&j','b&g','g&d','g&h','h&d','d&p','p&f']
-    mylist = ['18-9845&2-12OAU1-3&&18-9845&3-12m40-1', '18-9845&3-12m40-1&&18-9845&3-12m39-1','18-9845&3-12m39-2&&18-9845&3-12m35-1',]
+    mylist = ['18-9845&2-12OAU1-3&&18-9845&3-12m40-1', '18-9845&3-12m40-2&&18-9845&3-12m39-1','18-9845&3-12m40-3&&18-9845&3-12m35-1','18-9845&3-12m0-3&&18-9845&3-12m5-1']
     tran('18-9845&2-12OAU1-3&&18-9845&3-12m40-1',mylist)
