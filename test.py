@@ -7,6 +7,7 @@
     @desc:
 """
 from typing import List
+# from graphviz import Digraph
 
 class node:
     '''抽象出来的单板对象'''
@@ -17,15 +18,21 @@ class node:
 
         :param point: 节点信息
         '''
-        self.name, next = point.split('&')
         self.next = []
+        self.parse(point)
+
+    def parse(self,point):
+        name,next = point.split('&&')
+        self.name = '-'.join(name.split('-')[:-1])
+        self.port = name.split('-')[-1]
+        next = '-'.join(next.split('-')[:-1])
         self.next.append(next)
 
     def addnext(self, next):
         self.next.append(next)
 
     def __repr__(self):
-        return f'name:{self.name},next:{self.next}'
+        return f'name:{self.name}-{self.port},next:{self.next}'
 
     def __eq__(self, other):
         return self.name == other.name
@@ -38,6 +45,7 @@ class tran:
         :param start: 第一个节点
         :param mylist: 节点列表
         '''
+        # self.dot = Digraph(comment='The Round Table')
         self.strat = start
         # 对列表进行排序
         mylist.sort()
@@ -48,6 +56,7 @@ class tran:
         self.pre = ''
         self.deal_list()
         self.chain()
+        # self.dot.save('round-table.gv')
 
     def __repr__(self):
         return f'{self.node_list}'
@@ -72,7 +81,7 @@ class tran:
         out_str = f'{self.pre}({next_node_list[0]})'
         print(out_str)
         if len(next_node_list[0].next) >1:
-            self.pre += '-'
+            self.pre += '--'
         for sig_node in next_node_list:
             next_name_list = sig_node.next
             for i in next_name_list:
@@ -80,6 +89,7 @@ class tran:
                 for _node in self.node_list:
                     if i == _node.name:
                         _next_node.append(_node)
+                        # self.dot.edge(sig_node.name,_node.name)
                 # 首先将一条路径走完是正确的
                 self.create_chain(_next_node)
 
@@ -95,6 +105,10 @@ class tran:
             self.node_list.append(new_node)
             next = new_node
 
+        # for i in self.node_list:
+        #     self.dot.node(i.name,i.name)
+
 if __name__ == '__main__':
-    mylist = ['a&c', 'c&b', 'b&d', 'd&f', 'f&j','b&g','g&d','g&h','h&d','d&p','p&f']
-    tran('a&c',mylist)
+    # mylist = ['a&c', 'c&b', 'b&d', 'd&f', 'f&j','b&g','g&d','g&h','h&d','d&p','p&f']
+    mylist = ['18-9845&2-12OAU1-3&&18-9845&3-12m40-1', '18-9845&3-12m40-1&&18-9845&3-12m39-1','18-9845&3-12m39-2&&18-9845&3-12m35-1',]
+    tran('18-9845&2-12OAU1-3&&18-9845&3-12m40-1',mylist)
