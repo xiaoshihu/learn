@@ -104,7 +104,10 @@ class tran:
                 for _node in self.node_list:
                     if i == _node.name:
                         _next_node.append(_node)
-                        self.copy_list.remove(_node)
+                        try:
+                            self.copy_list.remove(_node)
+                        except:
+                            pass
                         # self.dot.edge(sig_node.name,_node.name)
                 # 首先将一条路径走完是正确的
                 self.create_chain(_next_node)
