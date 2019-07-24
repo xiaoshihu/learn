@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--a block title-->
+<title>{% block title %}{% endblock %} - Flaskr</title>
+<!--import css-->
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+<nav>
+    <h1>Flaskr</h1>
+    <ul>
+        <!--which var and function can use in templates?session can't?-->
+        <!--g can get in this templates-->
+        {% if g.user %}
+            <li><span>{{ g.user['username'] }}</span></li>
+            <!--use url_for get url,relative or absolute?-->
+            <li><a href="{{ url_for('auth.logout') }}">Log out</a></li>
+        {% else %}
+            <li><a href="{{ url_for('auth.register') }}">register</a></li>
+            <li><a href="{{ url_for('auth.login') }}">login in</a></li>
+        {% endif %}
+    </ul>
+</nav>
+<section class="content">
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+    <!--like a pipe,and flash message can show there,function can used in templates-->
+    {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+    {% endfor %}
+    {% block content %}{% endblock %}
+</section>
