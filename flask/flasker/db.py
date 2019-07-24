@@ -23,7 +23,7 @@ def get_db():
         g.db = sqlite3.connect(
             # file path,get config con
             current_app.config['DATABASE'],
-            # not know
+            # not know if file is not exsits will create it
             detect_types=sqlite3.PARSE_DECLTYPES
         )
         # config db connect
