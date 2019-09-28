@@ -1,0 +1,32 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Hello1 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\Afanto\AppData\Local\Temp\RSP3FA9.tmp" with contents
+[
+/nologo /MD /W3 /Gm /GX /ZI /Od /I "E:\ObjectARX 2002\inc" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "HELLO1_EXPORTS" /Fp"Debug/Hello1.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter01\Hello1\Hello.cpp"
+]
+Creating command line "cl.exe @C:\Users\Afanto\AppData\Local\Temp\RSP3FA9.tmp" 
+Creating temporary file "C:\Users\Afanto\AppData\Local\Temp\RSP3FAA.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib rxapi.lib acrx15.lib acutil15.lib acedapi.lib /nologo /dll /incremental:yes /pdb:"Debug/Hello1.pdb" /debug /machine:I386 /def:".\Hello.def" /out:"Debug/Hello1.arx" /implib:"Debug/Hello1.lib" /pdbtype:sept /libpath:"E:\ObjectARX 2002\lib" 
+".\Debug\Hello.obj"
+]
+Creating command line "link.exe @C:\Users\Afanto\AppData\Local\Temp\RSP3FAA.tmp"
+<h3>Output Window</h3>
+Compiling...
+Hello.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+Hello1.arx - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

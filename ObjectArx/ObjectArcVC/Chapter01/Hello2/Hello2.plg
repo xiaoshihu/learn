@@ -1,0 +1,58 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Hello2 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/Hello2.res" /d "_DEBUG" "D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter01\Hello2\Hello2.rc"" 
+Creating temporary file "C:\Users\Afanto\AppData\Local\Temp\RSPFC37.tmp" with contents
+[
+/nologo /MD /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /Fp"Debug/Hello2.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter01\Hello2\DocData.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter01\Hello2\Hello2.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter01\Hello2\Hello2Commands.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter01\Hello2\rxdebug.cpp"
+]
+Creating command line "cl.exe @C:\Users\Afanto\AppData\Local\Temp\RSPFC37.tmp" 
+Creating temporary file "C:\Users\Afanto\AppData\Local\Temp\RSPFC38.tmp" with contents
+[
+/nologo /MD /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /Fp"Debug/Hello2.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter01\Hello2\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\Users\Afanto\AppData\Local\Temp\RSPFC38.tmp" 
+Creating temporary file "C:\Users\Afanto\AppData\Local\Temp\RSPFC39.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib rxapi.lib acrx15.lib acdb15.lib acutil15.lib acge15.lib acgiapi.lib achapi15.lib acISMobj15.lib acad.lib acedapi.lib acsiobj.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/ZffHello2.pdb" /debug /machine:I386 /def:".\Hello2.def" /out:"Debug/ZffHello2.arx" /implib:"Debug/ZffHello2.lib" /pdbtype:sept 
+".\Debug\DocData.obj"
+".\Debug\Hello2.obj"
+".\Debug\Hello2Commands.obj"
+".\Debug\rxdebug.obj"
+".\Debug\StdAfx.obj"
+".\Debug\Hello2.res"
+]
+Creating command line "link.exe @C:\Users\Afanto\AppData\Local\Temp\RSPFC39.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+DocData.cpp
+Hello2.cpp
+     Compiling STL header files in release mode.
+Hello2Commands.cpp
+     Compiling STL header files in release mode.
+rxdebug.cpp
+     Compiling STL header files in release mode.
+Generating Code...
+Linking...
+   Creating library Debug/ZffHello2.lib and object Debug/ZffHello2.exp
+
+
+
+<h3>Results</h3>
+ZffHello2.arx - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

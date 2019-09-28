@@ -1,0 +1,61 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ModalDialog - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Release/ModalDialog.res" /d "NDEBUG" /d "_AFXDLL" "D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter11\ModalDialog\ModalDialog.rc"" 
+Creating temporary file "C:\Users\Afanto\AppData\Local\Temp\RSP8DDC.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Release/ModalDialog.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter11\ModalDialog\ArxDialog.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter11\ModalDialog\DocData.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter11\ModalDialog\MfcDialog.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter11\ModalDialog\ModalDialog.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter11\ModalDialog\ModalDialogCommands.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter11\ModalDialog\rxdebug.cpp"
+]
+Creating command line "cl.exe @C:\Users\Afanto\AppData\Local\Temp\RSP8DDC.tmp" 
+Creating temporary file "C:\Users\Afanto\AppData\Local\Temp\RSP8DDD.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Release/ModalDialog.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter11\ModalDialog\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\Users\Afanto\AppData\Local\Temp\RSP8DDD.tmp" 
+Creating temporary file "C:\Users\Afanto\AppData\Local\Temp\RSP8DDE.tmp" with contents
+[
+rxapi.lib acrx15.lib acdb15.lib acutil15.lib acge15.lib acgiapi.lib achapi15.lib acISMobj15.lib acad.lib acedapi.lib acsiobj.lib adui15.lib acui15.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/ZffModalDialog.pdb" /machine:I386 /def:".\ModalDialog.def" /out:"Release/ZffModalDialog.arx" /implib:"Release/ZffModalDialog.lib" 
+".\Release\ArxDialog.obj"
+".\Release\DocData.obj"
+".\Release\MfcDialog.obj"
+".\Release\ModalDialog.obj"
+".\Release\ModalDialogCommands.obj"
+".\Release\rxdebug.obj"
+".\Release\StdAfx.obj"
+".\Release\ModalDialog.res"
+]
+Creating command line "link.exe @C:\Users\Afanto\AppData\Local\Temp\RSP8DDE.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ArxDialog.cpp
+DocData.cpp
+MfcDialog.cpp
+ModalDialog.cpp
+ModalDialogCommands.cpp
+rxdebug.cpp
+Generating Code...
+Linking...
+   Creating library Release/ZffModalDialog.lib and object Release/ZffModalDialog.exp
+
+
+
+<h3>Results</h3>
+ZffModalDialog.arx - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

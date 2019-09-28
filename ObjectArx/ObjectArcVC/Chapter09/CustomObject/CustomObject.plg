@@ -1,0 +1,46 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: CustomObject - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\Afanto\AppData\Local\Temp\RSPD9C3.tmp" with contents
+[
+/nologo /MD /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Debug/CustomObject.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ  /c 
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter09\CustomObject\CustomObject.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter09\CustomObject\DocData.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter09\CustomObject\CustomObjectCommands.cpp"
+]
+Creating command line "cl.exe @C:\Users\Afanto\AppData\Local\Temp\RSPD9C3.tmp" 
+Creating temporary file "C:\Users\Afanto\AppData\Local\Temp\RSPD9C4.tmp" with contents
+[
+rxapi.lib acrx15.lib acdb15.lib acutil15.lib acge15.lib acgiapi.lib achapi15.lib acISMobj15.lib acad.lib acedapi.lib acsiobj.lib  adui15.lib acui15.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/ZffCustomObject.pdb" /debug /machine:I386 /def:".\CustomObject.def" /out:"Debug/ZffCustomObject.arx" /implib:"Debug/ZffCustomObject.lib" /pdbtype:sept 
+".\Debug\StdAfx.obj"
+".\Debug\rxdebug.obj"
+".\Debug\CustomObject.obj"
+".\Debug\DocData.obj"
+".\Debug\CustomObject.res"
+".\Debug\CustomObjectCommands.obj"
+"\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter09\CustomObjectDB\Debug\ZffCustomObjectDB.lib"
+]
+Creating command line "link.exe @C:\Users\Afanto\AppData\Local\Temp\RSPD9C4.tmp"
+<h3>Output Window</h3>
+Compiling...
+CustomObject.cpp
+DocData.cpp
+     Compiling STL header files in release mode.
+CustomObjectCommands.cpp
+     Compiling STL header files in release mode.
+Generating Code...
+     Compiling STL header files in release mode.
+Linking...
+
+
+
+<h3>Results</h3>
+ZffCustomObject.arx - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MfcToolbar - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/MfcToolbar.res" /d "_DEBUG" /d "_AFXDLL" "D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter11\MfcToolbar\MfcToolbar.rc"" 
+Creating temporary file "C:\Users\Afanto\AppData\Local\Temp\RSPEA6F.tmp" with contents
+[
+/nologo /MD /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Debug/MfcToolbar.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter11\MfcToolbar\AcToolBar.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter11\MfcToolbar\ArxMsgHandler.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter11\MfcToolbar\DocData.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter11\MfcToolbar\MfcToolbar.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter11\MfcToolbar\rxdebug.cpp"
+]
+Creating command line "cl.exe @C:\Users\Afanto\AppData\Local\Temp\RSPEA6F.tmp" 
+Creating temporary file "C:\Users\Afanto\AppData\Local\Temp\RSPEA70.tmp" with contents
+[
+/nologo /MD /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Debug/MfcToolbar.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter11\MfcToolbar\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\Users\Afanto\AppData\Local\Temp\RSPEA70.tmp" 
+Creating temporary file "C:\Users\Afanto\AppData\Local\Temp\RSPEA71.tmp" with contents
+[
+rxapi.lib acrx15.lib acdb15.lib acutil15.lib acge15.lib acgiapi.lib achapi15.lib acISMobj15.lib acad.lib acedapi.lib acsiobj.lib adui15.lib acui15.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/ZffMfcToolbar.pdb" /debug /machine:I386 /def:".\MfcToolbar.def" /out:"Debug/ZffMfcToolbar.arx" /implib:"Debug/ZffMfcToolbar.lib" /pdbtype:sept 
+".\Debug\AcToolBar.obj"
+".\Debug\ArxMsgHandler.obj"
+".\Debug\DocData.obj"
+".\Debug\MfcToolbar.obj"
+".\Debug\rxdebug.obj"
+".\Debug\StdAfx.obj"
+".\Debug\MfcToolbar.res"
+]
+Creating command line "link.exe @C:\Users\Afanto\AppData\Local\Temp\RSPEA71.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+     Compiling MFC header files in release mode.
+Compiling...
+AcToolBar.cpp
+ArxMsgHandler.cpp
+DocData.cpp
+     Compiling STL header files in release mode.
+MfcToolbar.cpp
+     Compiling STL header files in release mode.
+rxdebug.cpp
+     Compiling STL header files in release mode.
+Generating Code...
+Linking...
+   Creating library Debug/ZffMfcToolbar.lib and object Debug/ZffMfcToolbar.exp
+
+
+
+<h3>Results</h3>
+ZffMfcToolbar.arx - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DockControlBar - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\Afanto\AppData\Local\Temp\RSPC944.tmp" with contents
+[
+/nologo /MD /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Debug/DockControlBar.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Chapter11\DockControlBar\ChildDlg.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Document\DwgDatabaseUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Entity\ArcUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Entity\BlockUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Entity\circleutil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Entity\DimensionUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Entity\EllipseUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Entity\EntityUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Entity\HatchUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Entity\LineUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Entity\PolylineUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Entity\RegionUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Entity\SplineUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Entity\TextUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Others\ConvertUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Others\StringUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Geometry\GePointUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Geometry\GeRectangleUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Geometry\MathUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\SymbolTable\LayerUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\SymbolTable\TextStyleUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\SymbolTable\ViewUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\IO\AppDirectoryUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\IO\TextFileUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\IO\IniFile.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Interaction\GetInputUtil.cpp"
+"D:\工作资料\撰写图书\ObjectARX实例精解\新版光盘资料\Common\Interaction\SelectUtil.cpp"
+]
+Creating command line "cl.exe @C:\Users\Afanto\AppData\Local\Temp\RSPC944.tmp" 
+Creating temporary file "C:\Users\Afanto\AppData\Local\Temp\RSPC945.tmp" with contents
+[
+rxapi.lib acrx15.lib acdb15.lib acutil15.lib acge15.lib acgiapi.lib achapi15.lib acISMobj15.lib acad.lib acedapi.lib acsiobj.lib adui15.lib acui15.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/ZffDockControlBar.pdb" /debug /machine:I386 /def:".\DockControlBar.def" /out:"Debug/ZffDockControlBar.arx" /implib:"Debug/ZffDockControlBar.lib" /pdbtype:sept 
+".\Debug\ChildDlg.obj"
+".\Debug\DocData.obj"
+".\Debug\DockControlBar.obj"
+".\Debug\MyDockControlBar.obj"
+".\Debug\rxdebug.obj"
+".\Debug\StdAfx.obj"
+".\Debug\DockControlBar.res"
+".\Debug\DwgDatabaseUtil.obj"
+".\Debug\ArcUtil.obj"
+".\Debug\BlockUtil.obj"
+".\Debug\circleutil.obj"
+".\Debug\DimensionUtil.obj"
+".\Debug\EllipseUtil.obj"
+".\Debug\EntityUtil.obj"
+".\Debug\HatchUtil.obj"
+".\Debug\LineUtil.obj"
+".\Debug\PolylineUtil.obj"
+".\Debug\RegionUtil.obj"
+".\Debug\SplineUtil.obj"
+".\Debug\TextUtil.obj"
+".\Debug\ConvertUtil.obj"
+".\Debug\StringUtil.obj"
+".\Debug\GePointUtil.obj"
+".\Debug\GeRectangleUtil.obj"
+".\Debug\MathUtil.obj"
+".\Debug\LayerUtil.obj"
+".\Debug\TextStyleUtil.obj"
+".\Debug\ViewUtil.obj"
+".\Debug\AppDirectoryUtil.obj"
+".\Debug\TextFileUtil.obj"
+".\Debug\IniFile.obj"
+".\Debug\GetInputUtil.obj"
+".\Debug\SelectUtil.obj"
+]
+Creating command line "link.exe @C:\Users\Afanto\AppData\Local\Temp\RSPC945.tmp"
+<h3>Output Window</h3>
+Compiling...
+ChildDlg.cpp
+DwgDatabaseUtil.cpp
+ArcUtil.cpp
+BlockUtil.cpp
+circleutil.cpp
+DimensionUtil.cpp
+EllipseUtil.cpp
+EntityUtil.cpp
+HatchUtil.cpp
+LineUtil.cpp
+PolylineUtil.cpp
+RegionUtil.cpp
+SplineUtil.cpp
+TextUtil.cpp
+ConvertUtil.cpp
+StringUtil.cpp
+GePointUtil.cpp
+GeRectangleUtil.cpp
+MathUtil.cpp
+LayerUtil.cpp
+Generating Code...
+Compiling...
+TextStyleUtil.cpp
+ViewUtil.cpp
+AppDirectoryUtil.cpp
+TextFileUtil.cpp
+IniFile.cpp
+GetInputUtil.cpp
+SelectUtil.cpp
+Generating Code...
+Linking...
+   Creating library Debug/ZffDockControlBar.lib and object Debug/ZffDockControlBar.exp
+
+
+
+<h3>Results</h3>
+ZffDockControlBar.arx - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
