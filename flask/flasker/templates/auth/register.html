@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{# how can i judeg define a block or set value for block? it is seem check showed in parent templates? #}
+{% block header %}
+    <h1>{% block title %}Register{% endblock %}</h1>
+{% endblock %}
+{% block content %}
+    <form method="post">
+        <label for="username">Username</label>
+        <input name="username" id="username">
+        <!--for attr will check other id,and it is will do what?-->
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+        <input type="submit" value="Register">
+    </form>
+{% endblock %}

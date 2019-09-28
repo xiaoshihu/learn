@@ -1,0 +1,44 @@
+<!-- 实现如下功能，鼠标在页面上随机点击，在所点击处用红底黑字显示字符串”esensoft”。再次点击该字符串，该字符串消失 -->
+<style>
+    p {
+        color: black;
+        background-color: red;
+        width: min-content;
+        height: min-content;
+    }
+
+    div {
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<div></div>
+<script>
+    let div = document.getElementsByTagName('div')[0];
+    div.onclick = () => {
+        let x = event.clientX;
+        let y = event.clientY;
+        // alert(`(${x},${y})`);
+        let text = document.createElement('p');
+        text.textContent = 'esensoft';
+
+        // let width = text.width;
+        // alert(width);
+        text.style.left = x - 30;
+        text.style.top = y - 25;
+        text.style.position = 'absolute';
+        // 动态绑定监听事件
+        text.addEventListener('click', p_click, false);
+
+        div.appendChild(text);
+    };
+
+    function p_click() {
+        //   获取到当前点击的元素，删除即可,还需要屏蔽掉父层的事件
+        div.removeChild(event.srcElement);
+        // alert('click p');
+        // 阻止事件冒泡
+        event.stopPropagation()
+    }
+
+</script>
